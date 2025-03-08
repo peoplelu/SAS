@@ -5,4 +5,4 @@
  <a href='https://peoplelu.github.io/SAS.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
 
 
-![teaser](assets/teaser.jpg)
+![teaser](teaser_00.jpg)
