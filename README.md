@@ -25,7 +25,7 @@
 **11/Mar/2025**: We release our paper to [Arxiv](https://arxiv.org/abs/2503.08512).
 
 
-## Results on EmbodiedScan Benchmark
+## Results
 
 
 ### 1. Evaluations on zero-shot 3D semantic segmentation
