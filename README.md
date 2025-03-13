@@ -19,6 +19,7 @@
 <sup>&dagger;</sup>Corresponding author
 
 ![teaser](teaser_00.jpg)
+</div>
 
 ## :rocket: News
 
