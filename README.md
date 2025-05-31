@@ -108,7 +108,7 @@ Please create another two environments, lseg and seem, to install dependencies f
 
 Step 8: Install dependencies for Stable Diffusion
 ```bash
-pip install git+https://github.com/facebookresearch/segment-anything.git
+pip install datasets, diffusers, timm, transformers, clip_interrogator
 ```
 
 
