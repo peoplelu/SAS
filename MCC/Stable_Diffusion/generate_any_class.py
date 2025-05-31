@@ -343,7 +343,7 @@ def sub_processor(class_name):
     for rand in range(num_image):
         g_cpu = torch.Generator().manual_seed(image_cnt)
 
-        prompts = ['a good photo of a ' + classes + ' in indoor scenes']
+        prompts = ['a good photo of a ' + classes + ' in a room']
         # prompts = [classes]
 
         controller = AttentionStore()
