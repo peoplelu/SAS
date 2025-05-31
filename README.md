@@ -26,34 +26,11 @@
 **11/Mar/2025**: We release our paper to [Arxiv](https://arxiv.org/abs/2503.08512).
 
 
-<!-- TABLE OF CONTENTS -->
-<details open="open" style='padding: 10px; border-radius:5px 30px 30px 5px; border-style: solid; border-width: 1px;'>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#installation">Installation</a>
-    </li>
-    <li>
-      <a href="#data-preparation">Data Preparation</a>
-    </li>
-    <li>
-      <a href="#model-capability-construction">Model Capability Construction</a>
-    </li>
-    <li>
-      <a href="#Train">Train</a>
-    </li>
-    <li>
-      <a href="#acknowledgement">Acknowledgement</a>
-    </li>
-    <li>
-      <a href="#citation">Citation</a>
-    </li>
-  </ol>
-</details>
 
-
-## Installation
+## 🚀 Quick Start
+<details> <summary> 🛠️ Installation </summary>
 Start by cloning the repo:
+ 
 ```bash
 git clone https://github.com/peoplelu/SAS.git
 cd SAS
@@ -110,11 +87,10 @@ Step 8: Install dependencies for Stable Diffusion
 ```bash
 pip install datasets, diffusers, timm, transformers, clip_interrogator
 ```
+</details>
 
-
-
-
-## Data Preparation
+<details> <summary> 🔧 Dataset Preparation </summary>
+ 
 ### Download pre-processed data
 We provide the pre-processed point features from LSeg and SEEM, fused point features, and the constructed capabilities for the following datasets in [hugging face](https://huggingface.co/datasets/Charlie839242/SAS):
 - [x] ScanNet
@@ -145,8 +121,13 @@ You can also extract 3D point features, and obtain "scannet_multiview_lseg" and 
 
 TODO
 
-## Model Capability Construction
-You can also synthesize images and obtain "scannet_vocabulary" on your own. 
+</details>
+
+
+
+<details> <summary> 🎇 Model Capability Construction </summary>
+
+ You can also synthesize images and obtain "scannet_vocabulary" on your own. 
 ```bash
 cd MCC
 ```
@@ -190,20 +171,24 @@ python miou/cal_miou.py --split=lseg    # This will generate miou in out folder 
 python miou/cal_miou.py --split=seem    
 ```
 
+</details>
 
 
-## Feature Fusion
-Once we obtain the 3D point features from LSeg and SEEM, as well as the model capabilities, we can start to fusion the point features from different datasets.
+<details> <summary> 🎥 Training </summary>
 
-TODO
+### Superpoint extraction
 
-## Superpoint Extraction
-TODO
+ TODO
+</details>
+
+<details> <summary> 🌟 Evaluation </summary>
+
+ TODO
+</details>
 
 
 
-## Train
-TODO
+
 
 
 
@@ -219,49 +204,10 @@ TODO
 - [ ] Code and data for nuScenes
 
 
-## Results
-
-
-### 1. Evaluations on zero-shot 3D semantic segmentation
-
-We compare SAS with both zero-shot and fully-supervised approaches on nuScenes, ScanNet and MatterPort3D using mIoU as metrics. Best results under each setting are shown bold. 
-|Model | nuScenes | ScanNet | MatterPort3D |
-|  :----  | :---: |  :---: | :---: |
-|OpenScene | 42.1 | 54.2 | 43.4|
-|GGSD| 46.1 | 56.5|40.1|
-|Diff2Scene|- |  48.6 | 45.5|
-|Seal| 45.0| -|-|
-|OV3D| 44.6 | 57.3|45.8|
-|**SAS**|**47.5** | **61.9**|**48.6**|
-
-### 2. Gaussian segmentation
-
-2D semantic segmentation results of 3D gaussian splatting on 12 scenes from the ScanNet v2 validation set. Comparison focuses on NeRF/3DGS-based methods using mIoU and mAcc.
-|Model | Backbone | mIoU | mAcc | 
-|  :----  | :---: | :---: | :---: |
-|OpenSeg | EfficientNet | 53.4 | 75.1|
-|LSeg | ViT | 56.1 |  74.5|
-|LERF | NeRF+CLIP | 31.2 | 61.7|
-|PVLFF | NeRF+LSeg | 52.9 | 67.0|
-|LangSplat | 3DGS| 24.7 | 42.0|
-|Feature3DGS | 3DGS+LSeg | 59.2 | 75.1|
-|Semantic Gaussians | 3DGS+LSeg | 60.7 | 76.3|
-|**SAS** | 3DGS+LSeg+SEEM | **63.9**| **79.9**|
 
 
 
-### 3. 3D Instance segmentation
-
-3D open-vocabulary instance segmentation results on ScanNet v2 validation set.
-|Model | Semantic | mAP | AP@50 | AP@25 |
-|  :----  | :---: | :---: | :---: |:---: |
-|PointClip | Clip | - |4.5| 14.4|
-|OpenIns3D | Yoloworld | 19.9 |28.9| **38.9**|
-|OpenScene (2D/3D Ens.) | LSeg | 19.7 |25.9| 30.4|
-|OpenScene (3D Distill) | LSeg | 19.8 |25.7|30.4|
-|**SAS** | LSeg+SEEM | **25.1** |**31.7**|36.7|
-
-## Citation
+## 📜 Citation
 ```
 @article{li2025sas,
   title={SAS: Segment Any 3D Scene with Integrated 2D Priors},
@@ -270,3 +216,7 @@ We compare SAS with both zero-shot and fully-supervised approaches on nuScenes, 
   year={2025}
 }
 ```
+
+
+## 🤝 Acknowledgements
+Our code is based on [OpenScene](https://github.com/pengsongyou/openscene). We thank the authors for their excellent work!
