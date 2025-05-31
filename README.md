@@ -4,6 +4,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue) &nbsp;
  <a href='https://arxiv.org/abs/2503.08512'><img src='https://img.shields.io/badge/arXiv-2503.08512-b31b1b.svg'></a> &nbsp;
  <a href='https://peoplelu.github.io/SAS.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
+ [![Hugging Face Data](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-green)](https://huggingface.co/datasets/Charlie839242/SAS)&nbsp;
 
 <a href="https://openreview.net/profile?id=~Zhuoyuan_Li4">Zhuoyuan Li</a><sup>1*</sup>,</span>
 <a href="https://scholar.google.com/citations?user=cRpteW4AAAAJ&hl=zh-CN">Jiahao Lu</a><sup>1*</sup>,</span>
