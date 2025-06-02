@@ -193,7 +193,42 @@ python feat_fusion/fusion_scannet.py
 
 ### Superpoint extraction
 
+To extract superpoints of each scene in ScanNetv2 dataset, you should first download the raw [ScanNet v2](http://www.scan-net.org/) dataset to obtain the .ply file of each scene. The ScanNet v2 dataset structure is as follows:
+
+
+```
+superpoint_extraction
+├── scannet_v2
+│   ├── intrinsics.txt
+│   ├── scene0000_00
+│   │   ├── label-filt
+│   │   ├── scene0000_00_2d-instance-filt.zip
+│   │   ├── scene0000_00_2d-instance.zip
+│   │   ├── scene0000_00_2d-label-filt.zip
+│   │   ├── scene0000_00_2d-label.zip
+│   │   ├── scene0000_00.aggregation.json
+│   │   ├── scene0000_00.txt
+│   │   ├── scene0000_00_vh_clean_2.0.010000.segs.json
+│   │   ├── scene0000_00_vh_clean_2.labels.ply
+│   │   ├── scene0000_00_vh_clean_2.ply
+│   │   ├── scene0000_00_vh_clean.aggregation.json
+│   │   ├── scene0000_00_vh_clean.ply
+│   │   └── scene0000_00_vh_clean.segs.json
+│   ├── scene0000_01
+│   │   ├── ...
+│   │   ├── ...
+│   │   ├── ...
+```
+
+Then execute the following command to extract superpoints. The superpoint-related code is built upon [segmentator](https://github.com/Karbo123/segmentator).
+
+```bash
+python superpoint_extraction/scannet_superpoint.py
+```
+
+### Train
  TODO
+ 
 </details>
 
 <details> <summary> 🌟 Evaluation </summary>
