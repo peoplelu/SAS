@@ -220,6 +220,20 @@ superpoint_extraction
 │   │   ├── ...
 ```
 
+Then build the cpp lib for superpoint extraction:
+
+```bash
+cd csrc && mkdir build && cd build
+
+cmake .. \
+-DCMAKE_PREFIX_PATH=`python -c 'import torch;print(torch.utils.cmake_prefix_path)'` \
+-DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")  \
+-DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
+-DCMAKE_INSTALL_PREFIX=`python -c 'from distutils.sysconfig import get_python_lib; print(get_python_lib())'` 
+
+make && make install # after install, please do not delete this folder (as we only create a symbolic link)
+```
+
 Then execute the following command to extract superpoints. The superpoint-related code is built upon [segmentator](https://github.com/Karbo123/segmentator).
 
 ```bash
@@ -228,7 +242,7 @@ python superpoint_extraction/scannet_superpoint.py
 
 ### Train
  TODO
- 
+
 </details>
 
 <details> <summary> 🌟 Evaluation </summary>
