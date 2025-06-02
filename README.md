@@ -19,7 +19,7 @@
 <sup>*</sup>Equal contribution
 <sup>&dagger;</sup>Corresponding author
 
-![teaser](teaser_00.jpg)
+![teaser](assets/teaser_00.jpg)
 </div>
 
 ## :rocket: News
@@ -173,6 +173,20 @@ python miou/cal_miou.py --split=seem
 ```
 
 </details>
+
+
+
+<details> <summary> 🎆 Feature Fusion </summary>
+
+
+To integrate the LSeg features and the SEEM features of the ScanNet dataset using the constructed capability as the guide, execute the following command:
+
+```bash
+python feat_fusion/fusion_scannet.py
+```
+
+</details>
+
 
 
 <details> <summary> 🎥 Training </summary>
