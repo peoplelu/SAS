@@ -1,7 +1,0 @@
-/ssd/lizhuoyuan/segmentator/csrc/build/CMakeFiles/libsegmentator.dir
-/ssd/lizhuoyuan/segmentator/csrc/build/CMakeFiles/edit_cache.dir
-/ssd/lizhuoyuan/segmentator/csrc/build/CMakeFiles/rebuild_cache.dir
-/ssd/lizhuoyuan/segmentator/csrc/build/CMakeFiles/list_install_components.dir
-/ssd/lizhuoyuan/segmentator/csrc/build/CMakeFiles/install.dir
-/ssd/lizhuoyuan/segmentator/csrc/build/CMakeFiles/install/local.dir
-/ssd/lizhuoyuan/segmentator/csrc/build/CMakeFiles/install/strip.dir

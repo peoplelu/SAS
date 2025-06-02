@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libsegmentator.so -o libsegmentator.so CMakeFiles/libsegmentator.dir/segmentator.cpp.o  -Wl,-rpath,/ssd/lizhuoyuan/miniconda3/envs/cal_sp/lib/python3.8/site-packages/torch/lib /ssd/lizhuoyuan/miniconda3/envs/cal_sp/lib/python3.8/site-packages/torch/lib/libtorch_python.so 
