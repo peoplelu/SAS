@@ -386,6 +386,7 @@ python superpoint_extraction/scannet_superpoint.py
 - [x] Model capability construction
 - [ ] The first stage of training
 - [ ] The second stage of training
+- [ ] Code for evaluation
 - [x] Extraction of superpoints
 - [x] Code for extraction of point features from LSeg and SEEM
 - [ ] Code and data for MatterPort3D
