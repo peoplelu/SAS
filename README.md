@@ -372,14 +372,62 @@ Then execute the following command to extract superpoints. The superpoint-relate
 python superpoint_extraction/scannet_superpoint.py
 ```
 
-### Train
- TODO
+### Training of First Stage
+
+Make sure your data folder is as follows:
+```bash
+.
+├── data
+│   ├── scannet_3d
+│   ├── scannet_3d
+│   │   ├── train
+│   │   ├── val
+│   │   ├── scannetv2_train.txt
+│   │   ├── scannetv2_val.txt
+│   │   ├── scannetv2_test.txt
+│   │   ├── superpoint    # extracted superpoint
+│   │   |   ├── scene0000_00_vh_clean_2.pth
+│   │   |   ├── scene0000_01_vh_clean_2.pth
+│   │   |   ├── ...
+```
+
+Then modify config/scannet/ours_lseg.yaml according to your own need.
+- data_root_2d_fused_feature: the fused features of LSeg and SEEM
+- data_root: including the 3D ScanNet data and its superpoint
+- checkpoint: used for second stage training
+- save_path: path that saves the training metric
+
+Then execute the following command to enable the training of first stage:
+```bash
+sh run/distill_sp.sh exp/xxxx config/scannet/ours_lseg.yaml
+```
+
+### Training of Second Stage
+
+After the training of first stage, set "checkpoint" in config to be the model of the last epoch from the first stage of training. Then execute the following command to enable the training of the second stage. Note that you can adjust the hyperparameters on your own.
+
+```bash
+sh run/distill_EMA.sh exp/xxxx config/scannet/ours_lseg.yaml
+```
+
+
+
+
 
 </details>
 
 <details> <summary> 🌟 Evaluation </summary>
 
- TODO
+For evaluating the performance of the 2D features (either from LSeg, SEEM, or fused), set "data_root_2d_fused_feature" in config to your tested 2D feature folder (e.g., data/scannet_multiview_fuse) and execute the following command:
+```bash
+sh run/eval.sh out/xxxx config/scannet/ours_lseg.yaml fusion
+```
+
+For evaluating the performance of the distilled model (either from first stage or second stage), set "model_path" in config to your tested 3D model (e.g., exp/xxxx/model/model_best.pth.tar) and execute the following command:
+```bash
+sh run/eval.sh out/xxxx config/scannet/ours_lseg.yaml distill
+```
+
 </details>
 
 
@@ -392,11 +440,12 @@ python superpoint_extraction/scannet_superpoint.py
 - [x] Installation
 - [x] Pre-processed data
 - [x] Model capability construction
-- [ ] The first stage of training
-- [ ] The second stage of training
-- [ ] Code for evaluation
+- [x] The first stage of training
+- [x] The second stage of training
+- [x] Code for evaluation
 - [x] Extraction of superpoints
 - [x] Code for extraction of point features from LSeg and SEEM
+- [ ] Release pretrained model
 - [ ] Code and data for MatterPort3D
 - [ ] Code and data for nuScenes
 
