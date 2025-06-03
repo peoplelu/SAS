@@ -120,7 +120,47 @@ data
 ### Extract Point Features
 You can also extract 3D point features, and obtain "scannet_multiview_lseg" and "scannet_multiview_seem" on your own. 
 
-TODO
+
+#### LSeg features of ScanNet
+First, download LSeg weight [demo_e200.ckpt](https://github.com/isl-org/lang-seg) and put it in checkpoint folder. Then download ADEChallengeData2016.zip from [link](https://ade20k.csail.mit.edu/), unzip it, and place it in dataset folder.
+Download the raw ScanNet 2D images from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip) and ScanNet 3D data from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip), and put them under scannet folder. 
+
+```bash
+wget https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip
+wget https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip
+```
+
+Then file strcuture is as follows:
+
+```
+lseg_feat
+├── checkpoints
+│   └── demo_e200.ckpt
+├── dataset
+│   └── ADEChallengeData2016
+│   │   ├── ...
+│   │   ├── ...
+│   │   └── ...
+├── scannet
+│   ├── scannet_2d
+│   │   ├── ...
+│   │   ├── ...
+│   │   └── ...
+│   ├── scannet_3d
+│   │   ├── ...
+│   │   ├── ...
+│   │   └── ...
+```
+
+Then execute the following command to extract per-point features of scannet  from LSeg:
+
+```bash
+cd point_feat_extraction/lseg_feat
+conda activate lseg
+python python fusion_scannet.py
+```
+
+This will generate features from LSeg in "scannet_multiview_lseg" folder.
 
 </details>
 
