@@ -104,7 +104,8 @@ git lfs install
 git clone https://huggingface.co/datasets/Charlie839242/SAS
 ```
 
-The structure of the pre-processed data (e.g., ScanNet) is as follows. "scannet_multiview_lseg" and "scannet_multiview_seem" store the 3D point features from LSeg and SEEM respectively. "scannet_vocabulary" contain the generated images and the constructed capabilities. "scannet_multiview_fuse" is the combination of "scannet_multiview_lseg" and "scannet_multiview_seem" with "scannet_vocabulary" as the guide.
+The structure of the pre-processed data (e.g., ScanNet) is as follows. 
+
 ```
 data
   └── scannet
@@ -116,16 +117,19 @@ data
       └── vocabulary
           └── scannet_vocabulary
 ```
+- "scannet_multiview_lseg" and "scannet_multiview_seem" store the 3D point features from LSeg and SEEM respectively. 
+- "scannet_vocabulary" contain the generated images and the constructed capabilities.
+- "scannet_multiview_fuse" is the combination of "scannet_multiview_lseg" and "scannet_multiview_seem" with "scannet_vocabulary" as the guide.
 
 ### Extract Point Features
 You can also extract 3D point features, and obtain "scannet_multiview_lseg" and "scannet_multiview_seem" on your own. 
 
 
 #### LSeg features of ScanNet
-This part of code is included in "point_feat_extraction/lseg_feat".
-
-First, download LSeg weight [demo_e200.ckpt](https://github.com/isl-org/lang-seg) and put it in checkpoint folder. Then download ADEChallengeData2016.zip from [link](https://ade20k.csail.mit.edu/), unzip it, and place it in dataset folder.
-Download the raw ScanNet 2D images from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip) and ScanNet 3D data from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip), and put them under scannet folder. 
+This part of code is included in "point_feat_extraction/lseg_feat". Following the below commands to set up: 
+- Download LSeg weight [demo_e200.ckpt](https://github.com/isl-org/lang-seg) and put it in checkpoint folder. 
+- Download ADEChallengeData2016.zip from [link](https://ade20k.csail.mit.edu/), unzip it, and place it in dataset folder.
+- Download the raw ScanNet 2D images from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip) and ScanNet 3D data from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip), and put them under scannet folder. 
 
 ```bash
 wget https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip
@@ -168,9 +172,10 @@ This will generate features from LSeg in "scannet_multiview_lseg" folder.
 
 
 #### SEEM features of ScanNet
-This part of code is included in "point_feat_extraction/seem_feat".
+This part of code is included in "point_feat_extraction/seem_feat". Following the below commands to set up:
 
-Download the SEEM checkpoint from [link](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focall_v0.pt) and place it in seem_feat folder. Then, download the raw ScanNet 2D images from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip) and ScanNet 3D data from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip), and put them under scannet folder.
+- Download the SEEM checkpoint from [link](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focall_v0.pt) and place it in seem_feat folder. 
+- Download the raw ScanNet 2D images from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip) and ScanNet 3D data from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip), and put them under scannet folder.
 
 ```bash
 wget https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip
@@ -223,7 +228,7 @@ seem_feat
 └── └── └── └── pano_seg_img
 ```
 
-Second, execute the following code that utilizes [TAP](https://github.com/baaivision/tokenize-anything) to generate captions for masks from SEEM. Before this, download [TAP checkpoint](https://huggingface.co/BAAI/tokenize-anything/blob/main/models/tap_vit_h_v1_1.pkl) and palce it in TAP/models/tap_vit_h_v1_1.pkl and 
+Second, execute the following code that utilizes [TAP](https://github.com/baaivision/tokenize-anything) to generate captions for masks from SEEM. Before this, download [TAP checkpoint](https://huggingface.co/BAAI/tokenize-anything/blob/main/models/tap_vit_h_v1_1.pkl) and palce it in TAP/models/tap_vit_h_v1_1.pkl. 
 
 ```bash
 conda create -n ta python=3.8
@@ -257,8 +262,11 @@ This will generate features from SEEM in "scannet_multiview_seem" folder.
 cd MCC
 ```
 
-### Download SAM, LSeg and SEEM checkpoint
-Download from [LSeg Checkpoint](https://drive.google.com/file/d/1FTuHY1xPUkM-5gaDtMfgCl3D0gR89WV7/view) and place it in lseg_util folder. Then download ADEChallengeData2016.zip from [link](https://ade20k.csail.mit.edu/), unzip it, and place it in lseg_util folder. Download the SEEM checkpoint from [link](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focall_v0.pt) and place it in seem_util folder. Download the SAM checkpoint from [link](https://github.com/facebookresearch/segment-anything#model-checkpoints) and place it in sam_util folder.
+### Checkpoint Setup
+- Download from [LSeg Checkpoint](https://drive.google.com/file/d/1FTuHY1xPUkM-5gaDtMfgCl3D0gR89WV7/view) and place it in lseg_util folder. 
+- Download ADEChallengeData2016.zip from [link](https://ade20k.csail.mit.edu/), unzip it, and place it in lseg_util folder. 
+- Download the SEEM checkpoint from [link](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focall_v0.pt) and place it in seem_util folder. 
+- Download the SAM checkpoint from [link](https://github.com/facebookresearch/segment-anything#model-checkpoints) and place it in sam_util folder.
 
 ### Generate synthesized images
 ```bash
