@@ -122,6 +122,8 @@ You can also extract 3D point features, and obtain "scannet_multiview_lseg" and 
 
 
 #### LSeg features of ScanNet
+This part of code is included in "point_feat_extraction/lseg_feat".
+
 First, download LSeg weight [demo_e200.ckpt](https://github.com/isl-org/lang-seg) and put it in checkpoint folder. Then download ADEChallengeData2016.zip from [link](https://ade20k.csail.mit.edu/), unzip it, and place it in dataset folder.
 Download the raw ScanNet 2D images from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip) and ScanNet 3D data from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip), and put them under scannet folder. 
 
@@ -157,10 +159,92 @@ Then execute the following command to extract per-point features of scannet  fro
 ```bash
 cd point_feat_extraction/lseg_feat
 conda activate lseg
-python python fusion_scannet.py
+python fusion_scannet.py
 ```
 
 This will generate features from LSeg in "scannet_multiview_lseg" folder.
+
+
+
+
+#### SEEM features of ScanNet
+This part of code is included in "point_feat_extraction/seem_feat".
+
+Download the SEEM checkpoint from [link](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focall_v0.pt) and place it in seem_feat folder. Then, download the raw ScanNet 2D images from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip) and ScanNet 3D data from [OpenScene](https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip), and put them under scannet folder.
+
+```bash
+wget https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_2d.zip
+wget https://cvg-data.inf.ethz.ch/openscene/data/scannet_processed/scannet_3d.zip
+```
+
+Then file strcuture is as follows:
+
+```
+seem_feat
+├── seem_focall_v0.pt
+├── scannet
+│   ├── scannet_2d
+|   │   ├── scene0000_00
+|   |   │   ├── color
+|   |   │   ├── depth
+|   |   │   ├── label
+|   |   │   └── pose
+|   │   ├── scene0000_01
+|   |   │   ├── ...
+|   |   │   └── ...
+│   ├── scannet_3d
+│   │   ├── ...
+│   │   ├── ...
+│   │   └── ...
+```
+
+First, execute the following command to extract the panoptic segmentation result of each 2D image from SEEM:
+
+```bash
+cd point_feat_extraction/seem_feat
+conda activate seem
+python extract_seem_pano.py
+python extract_seem_semantic.py
+```
+
+Now, the file structure becomes:
+```
+seem_feat
+├── scannet
+│   ├── scannet_2d
+|   │   ├── scene0000_00
+|   |   │   ├── color
+|   |   │   ├── depth
+|   |   │   ├── label
+|   |   │   ├── pose
+|   |   │   ├── sem_seg
+|   |   │   ├── sem_seg_img
+|   |   │   ├── pano_seg
+└── └── └── └── pano_seg_img
+```
+
+Second, execute the following code that utilizes [TAP](https://github.com/baaivision/tokenize-anything) to generate captions for masks from SEEM. Before this, download [TAP checkpoint](https://huggingface.co/BAAI/tokenize-anything/blob/main/models/tap_vit_h_v1_1.pkl) and palce it in TAP/models/tap_vit_h_v1_1.pkl and 
+
+```bash
+conda create -n ta python=3.8
+conda activate ta
+pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/cu118
+pip install packaging, ninja
+pip install flash-attn --no-build-isolation
+pip install git+ssh://git@github.com/baaivision/tokenize-anything.git
+
+cd point_feat_extraction/seem_feat
+python TAP/infer.py
+```
+
+Finally, execute the following code to encode the extracted captions of each mask:
+```bash
+cd point_feat_extraction/seem_feat
+python fusion_scannet.py
+```
+This will generate features from SEEM in "scannet_multiview_seem" folder.
+
+
 
 </details>
 
@@ -302,8 +386,8 @@ python superpoint_extraction/scannet_superpoint.py
 - [x] Model capability construction
 - [ ] The first stage of training
 - [ ] The second stage of training
-- [ ] Extraction of superpoints
-- [ ] Code for extraction of point features from LSeg and SEEM
+- [x] Extraction of superpoints
+- [x] Code for extraction of point features from LSeg and SEEM
 - [ ] Code and data for MatterPort3D
 - [ ] Code and data for nuScenes
 
