@@ -454,6 +454,7 @@ sh run/eval.sh out/xxxx config/scannet/ours_lseg.yaml distill
 
 
 ## 📜 Citation
+If you find our code or paper useful, please cite
 ```
 @article{li2025sas,
   title={SAS: Segment Any 3D Scene with Integrated 2D Priors},
@@ -465,4 +466,4 @@ sh run/eval.sh out/xxxx config/scannet/ours_lseg.yaml distill
 
 
 ## 🤝 Acknowledgements
-Our code is based on [OpenScene](https://github.com/pengsongyou/openscene). We thank the authors for their excellent work!
+Our code is built upon [OpenScene](https://github.com/pengsongyou/openscene). We thank the authors for their excellent work!
