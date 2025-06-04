@@ -22,7 +22,8 @@
 ![teaser](assets/teaser_00.jpg)
 </div>
 
-## :rocket: News
+## :flag: News
+
 
 **11/Mar/2025**: We release our paper to [Arxiv](https://arxiv.org/abs/2503.08512).
 
