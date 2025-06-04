@@ -428,6 +428,8 @@ For evaluating the performance of the distilled model (either from first stage o
 sh run/eval.sh out/xxxx config/scannet/ours_lseg.yaml distill
 ```
 
+We also release the pretrained checkpoint on huggingface, including [ScanNet checkpoint](https://huggingface.co/datasets/Charlie839242/SAS/tree/main/checkpoint/scannet), [MatterPort3D checkpoint](https://huggingface.co/datasets/Charlie839242/SAS/tree/main/checkpoint/matterport3d), and [nuScene checkpoint](https://huggingface.co/datasets/Charlie839242/SAS/tree/main/checkpoint/nuscenes). you can set "model_path" in config to your downloaded model for direct evaluation.
+
 </details>
 
 
@@ -445,7 +447,7 @@ sh run/eval.sh out/xxxx config/scannet/ours_lseg.yaml distill
 - [x] Code for evaluation
 - [x] Extraction of superpoints
 - [x] Code for extraction of point features from LSeg and SEEM
-- [ ] Release pretrained model
+- [x] Release pretrained model
 - [ ] Code and data for MatterPort3D
 - [ ] Code and data for nuScenes
 
