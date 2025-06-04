@@ -162,7 +162,7 @@ def main_worker(gpu, ngpus_per_node, argss):
             checkpoint = torch.load(
                 args.resume, map_location=lambda storage, loc: storage.cuda())
             model.load_state_dict(checkpoint['state_dict'], strict=True)
-            temp = checkpoint['best_iou']
+            temp = 0
             logger.info("=> loading checkpoint '{}'".format(temp))
         else:
             if main_process():

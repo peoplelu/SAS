@@ -193,7 +193,7 @@ def main_worker(gpu, ngpus_per_node, argss):
             logger.info('Loaded a parallel model')
 
         if main_process():
-            logger.info("=> loaded checkpoint '{}' (epoch {})".format(args.model_path, checkpoint['epoch']))    
+            logger.info("=> loaded checkpoint '{}' ".format(args.model_path))    
     else:
         raise RuntimeError("=> no checkpoint found at '{}'".format(args.model_path))
 
