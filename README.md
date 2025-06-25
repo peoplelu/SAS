@@ -1,6 +1,6 @@
 <div align="center">
  
-# SAS: Segment Any 3D Scene with Integrated 2D Priors
+# [ICCV 2025] SAS: Segment Any 3D Scene with Integrated 2D Priors
 ![Version](https://img.shields.io/badge/version-1.0.0-blue) &nbsp;
  <a href='https://arxiv.org/abs/2503.08512'><img src='https://img.shields.io/badge/arXiv-2503.08512-b31b1b.svg'></a> &nbsp;
  <a href='https://peoplelu.github.io/SAS.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
@@ -24,6 +24,7 @@
 
 ## 🚩 News
 
+**26/Jun/2025**: Our paper is accepted by ICCV 2025. Congratulations!
 
 **11/Mar/2025**: We release our paper to [Arxiv](https://arxiv.org/abs/2503.08512).
 
